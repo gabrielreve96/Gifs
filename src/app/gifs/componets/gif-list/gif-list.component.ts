@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, Input } from '@angular/core';
 import { GifListItemComponent } from "../gif-list-item/gif-list-item.component";
 import { ServicesGifListService } from 'src/app/shared/services/ServicesGifList.service';
+import { Gif } from '../../interfaces/gifs.interface';
 
 @Component({
   selector: 'app-gif-list',
@@ -10,6 +11,10 @@ import { ServicesGifListService } from 'src/app/shared/services/ServicesGifList.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GifListComponent { 
-  public listImgUrl =  inject(ServicesGifListService)
+ 
+  public data = input<Gif>()
+
+  @Input() imgUrl: Gif[] = []; 
+   
   
 }

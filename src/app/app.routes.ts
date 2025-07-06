@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { DashboardPageComponent } from './gifs/pages/dashboard-page/dashboard-page.component';
+
 
 export const routes: Routes = [
     {
@@ -18,6 +18,10 @@ export const routes: Routes = [
             {
                  path:"trending",
                  loadComponent:()=>import("./gifs/pages/trendig-page/trendig-page.component").then((m) => m.TrendigPageComponent)
+            },
+            {
+                 path:"historipages/:query",
+                 loadComponent:()=>import("./gifs/pages/history-pages/history-pages.component").then(m=>m.HistoryPagesComponent)
             }
 
         ]

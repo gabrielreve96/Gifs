@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MenuOption } from '../../../interfaces/MenuOption';
 import { ICONS } from '../../../../shared/constants/icons.constants';
+import { GifServices } from 'src/app/gifs/services/gifs.services';
 
 @Component({
   selector: 'app-side-menu-option',
@@ -14,10 +15,11 @@ import { ICONS } from '../../../../shared/constants/icons.constants';
   styleUrl: './side-menu-option.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideMenuOptionComponent {
-  /**
-   * Opciones del menú lateral usando signals para reactividad
-   */
+export class SideMenuOptionComponent { 
+ 
+
+
+
   public readonly menuOptions = signal<MenuOption[]>([
     {
       icon: ICONS.TRENDING,
@@ -30,26 +32,14 @@ export class SideMenuOptionComponent {
       label: 'Search',
       router: '/dashboard/search',
       sublabel: 'Search GIFs'
-    },
-    {
-      icon: ICONS.FAVORITES,
-      label: 'Favorites',
-      router: '/dashboard/favorites',
-      sublabel: 'Your favorite GIFs'
-    },
-    {
-      icon: ICONS.HISTORY,
-      label: 'History',
-      router: '/dashboard/history',
-      sublabel: 'Recently viewed'
     }
   ]);
 
-  /**
-   * Verifica si una ruta está activa
-   * @param item - El item del menú
-   * @returns true si la ruta está activa
-   */
+
+   public  historyGif = inject(GifServices)
+    
+
+
   isActive(item: MenuOption): boolean {
     // Esta lógica se puede expandir según las necesidades
     return window.location.pathname.includes(item.router);

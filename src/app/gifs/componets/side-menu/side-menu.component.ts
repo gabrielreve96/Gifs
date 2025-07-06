@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SideMenuHeaderComponent } from "./side-menu-header/side-menu-header.component";
 import { SideMenuOptionComponent } from "./side-menu-option/side-menu-option.component";
+import { GifServices } from '../../services/gifs.services';
 
 @Component({
   selector: 'app-side-menu',
@@ -9,4 +10,8 @@ import { SideMenuOptionComponent } from "./side-menu-option/side-menu-option.com
   styleUrl: './side-menu.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideMenuComponent { }
+export class SideMenuComponent {
+    
+    public  historyGif = inject(GifServices)
+    
+ }
