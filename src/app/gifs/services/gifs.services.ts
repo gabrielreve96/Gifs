@@ -58,5 +58,10 @@ export class GifServices {
      );
 
  }
+
+getHistoryGifs(query: string): Gif[] {
+  return this.historySearch()[query.toLowerCase()] ?? [];
+}
+
     
 }                   
